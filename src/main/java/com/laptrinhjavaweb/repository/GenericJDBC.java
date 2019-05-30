@@ -2,6 +2,8 @@ package com.laptrinhjavaweb.repository;
 
 import java.util.List;
 
+import com.laptrinhjavaweb.dto.BuildingDTO;
+
 public interface GenericJDBC<T> {
 	 List<T> query(String sql,  Object...parameters);
 	 void update(String sql, Object... parameters);
@@ -9,5 +11,6 @@ public interface GenericJDBC<T> {
 	 Long insert(Object object);
 	 void update(Object object);
 	 void delete(Object object);
-	 List<T> query(Object ...parameters);
+	 public List<T> findById(Object object);
+	 List<T> search(Object object);
 }
