@@ -28,25 +28,21 @@ public class BuildingService implements IBuildingService{
 		return null;
 	}
 	
-	public void delete(BuildingDTO buildingDTO) {
+	public void delete(long id) {
+		BuildingDTO buildingDTO = new BuildingDTO();
 		BuildingConverter buildingConverter = new BuildingConverter();
 		BuildingEntity buildingEntity = buildingConverter.convertToEntity(buildingDTO);
-		buildingRepository.delete(buildingEntity);
+		buildingRepository.delete(id);
 	}
 
 	@Override
-	public BuildingDTO findById(BuildingDTO buildingDTO) {
-		
+	public <T> T findById(long id) {
+		BuildingDTO buildingDTO = new BuildingDTO();
 		BuildingConverter buildingConverter = new BuildingConverter();
 		BuildingEntity buildingEntity = buildingConverter.convertToEntity(buildingDTO);
-		List<BuildingEntity> valuesEntity = buildingRepository.findById(buildingEntity);
-		List<BuildingDTO> valuesDTO = new ArrayList<BuildingDTO>();
-		
-		for(BuildingEntity entity : valuesEntity) {
-			valuesDTO.add(buildingConverter.convertToDTO(entity));
-			
-		}
-		return valuesDTO.get(0);
+		BuildingEntity valuesEntity = buildingRepository.findById(id);
+		BuildingDTO valuesDTO = buildingConverter.convertToDTO(valuesEntity);
+		return (T) valuesDTO;
 		
 	}
 	public List<BuildingDTO> search(BuildingDTO buildingDTO) {
@@ -63,6 +59,7 @@ public class BuildingService implements IBuildingService{
 	}
 		return null;
 	}
+	
 	}
 	
 

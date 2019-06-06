@@ -36,7 +36,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		mapper.writeValue(response.getOutputStream(), buildingDTO);
 	}
 
-/*
+
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		ObjectMapper mapper = new ObjectMapper();
@@ -44,11 +44,11 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		response.setContentType("application/json");
 		BuildingDTO buildingDTO = HttpUtil.of(request.getReader()).toModel(BuildingDTO.class);
 		
-		buildingDTO = buildingService.findById(buildingDTO);
+		buildingDTO = buildingService.findById(buildingDTO.getId());
 		
 		mapper.writeValue(response.getOutputStream(), buildingDTO);
 }
-*/
+
 
 
 protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,10 +57,10 @@ protected void doDelete(HttpServletRequest request, HttpServletResponse response
 		response.setContentType("application/json");
 		BuildingDTO buildingDTO = HttpUtil.of(request.getReader()).toModel(BuildingDTO.class);
 	
-		 buildingService.delete(buildingDTO);
+		 buildingService.delete(buildingDTO.getId());
 		mapper.writeValue(response.getOutputStream(), buildingDTO);
 }
-
+/*
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	ObjectMapper mapper = new ObjectMapper();
@@ -72,5 +72,5 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	
 	mapper.writeValue(response.getOutputStream(), listDTO);
 }
-
+*/
 }
