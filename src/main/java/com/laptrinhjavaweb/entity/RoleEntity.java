@@ -1,7 +1,11 @@
 package com.laptrinhjavaweb.entity;
 
 import com.javaweb.annotion.Column;
+import com.javaweb.annotion.Entity;
+import com.javaweb.annotion.Table;
 
+@Entity
+@Table(name = "role")
 public class RoleEntity extends BaseEntity{
 	@Column(name = "name")
 	private String name;

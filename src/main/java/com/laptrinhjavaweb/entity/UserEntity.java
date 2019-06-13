@@ -1,7 +1,11 @@
 package com.laptrinhjavaweb.entity;
 
 import com.javaweb.annotion.Column;
+import com.javaweb.annotion.Entity;
+import com.javaweb.annotion.Table;
 
+@Entity
+@Table(name = "user")
 public class UserEntity extends BaseEntity {
 	
 	@Column(name = "username")
