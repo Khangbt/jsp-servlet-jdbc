@@ -111,7 +111,7 @@
 										<label class="col-sm-3 control-label no-padding-left" for="form-field-1"> Diện tích thuê </label>
 
 										<div class="col-sm-9">
-											<input type="number" id="fadfa" placeholder="diện tích thuê" class="col-xs-10 col-sm-12">
+											<input type="text" id="fadfa" placeholder="diện tích thuê" class="col-xs-10 col-sm-12">
 										</div>
 									</div>
 									<div class="form-group">

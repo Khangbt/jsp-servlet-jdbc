@@ -794,13 +794,14 @@ public class AbstractJDBC<T> implements GenericJDBC<T> {
 					sql.append(where[0]);
 				}
 				if(pageble!=null) {
+					if(pageble.getSorter()!=null) {
+						Sorter sorter = pageble.getSorter();
+							sql.append("ORDER BY "+sorter.getSortName()+" "+sorter.getSortBy()+"");
+						}
 					if(pageble.getOffset()!=null && pageble.getLimit()!=null) {
 						sql.append("LIMIT "+pageble.getOffset()+", "+pageble.getLimit()+"");
 					}
-					if(pageble.getSorter()!=null) {
-					Sorter sorter = pageble.getSorter();
-						sql.append("ORDER BY "+sorter.getSortName()+" "+sorter.getSortBy()+"");
-					}
+					
 				}
 	        try {
 	        	conn = getConnection();
@@ -840,7 +841,7 @@ public class AbstractJDBC<T> implements GenericJDBC<T> {
 				Table table = zClass.getAnnotation(Table.class);
 				tableName = table.name();
 			}
-		StringBuilder result = new StringBuilder("SELECT * FROM "+tableName+" WHERE 1=1");
+		StringBuilder result = new StringBuilder("SELECT * FROM "+tableName+" A WHERE 1=1");
 		if(properties!=null && properties.size()>0) {
 			String[] params = new String[properties.size()];
 			Object[] values = new Object[properties.size()];
@@ -853,7 +854,7 @@ public class AbstractJDBC<T> implements GenericJDBC<T> {
 			}
 			for(int j=0 ; j < params.length; j++) {
 				if(values[j] instanceof String) {
-				result.append(" and LOWER("+params[j]+") LIKE '%"+values[j]+"%'");
+				result.append(" and LOWER("+params[j]+") LIKE '%"+values[j].toString().toLowerCase()+"%'");
 			}else if(values[j] instanceof Integer) {
 				result.append("and "+params[j]+" = "+values[j]+" ");
 			}
