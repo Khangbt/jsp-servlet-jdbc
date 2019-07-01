@@ -46,13 +46,13 @@
 											<div class="col-sm-6">
 												<label><b>Tên Sản phẩm</b></label>
 												<div class="fg-line">
-													<input type="text" class="form-control input-sm" name="name" value="${model.name }" />
+													<input type="text" class="form-control input-sm" name="name" value="${model.name}" />
 												</div>
 											</div>
 											<div class="col-sm-6">
 												<label><b>Diện tích sàn</b></label>
 												<div class="fg-line">
-													<input type="text" class="form-control input-sm" name ="buildingArea" value="${model.buildingArea }"/>
+													<input type="text" class="form-control input-sm" name ="buildingArea" value="${model.buildingArea}"/>
 												</div>
 											</div>
 
@@ -62,23 +62,26 @@
 												<label><b>Quận hiện có</b></label>
 												<div class="fg-line">
 													<select class="custom-control" name="district">
-														<option selected>Chọn-quận</option>
-														<option value ="QUAN_1">Quận 1</option>
-														<option value ="QUAN_2" >Quận 2</option>
-														<option value ="QUAN_3">Quận 3</option>
+														<option value ="">Chọn-quận</option>
+														
+														<c:forEach var="item" items="${districts}">
+														<option value ="${item.key}">${item.value}</option>
+														</c:forEach>
+														
+														
 													</select>
 												</div>
 											</div>
 											<div class="col-sm-4">
 												<label><b>Phường</b></label>
 												<div class="fg-line">
-													<input type="text" class="form-control input-sm" name ="ward" value="${model.ward }" />
+													<input type="text" class="form-control input-sm" name ="ward" value="${model.ward}" />
 												</div>
 											</div>
 											<div class="col-sm-4">
 												<label><b>Đường</b></label>
 												<div class="fg-line">
-													<input type="text" class="form-control input-sm" name ="street" value="${model.street }" />
+													<input type="text" class="form-control input-sm" name ="street" value="${model.street}" />
 												</div>
 											</div>
 										</div>
@@ -86,19 +89,19 @@
 											<div class="col-sm-4">
 												<label><b>Số tầng hầm</b></label>
 												<div class="fg-line">
-													<input type="text" class="form-control input-sm" name ="numberOfBasement" value="${model.numberOfBasement }" />
+													<input type="text" class="form-control input-sm" name ="numberOfBasement" value="${model.numberOfBasement}" />
 												</div>
 											</div>
 											<div class="col-sm-4">
 												<label><b>Hướng</b></label>
 												<div class="fg-line">
-													<input type="text" class="form-control input-sm" name ="direction" value="${model.direction }" />
+													<input type="text" class="form-control input-sm" name ="direction" value="${model.direction}" />
 												</div>
 											</div>
 											<div class="col-sm-4">
 												<label><b>Hạng</b></label>
 												<div class="fg-line">
-													<input type="text" class="form-control input-sm" name ="level" value="${model.level }"/>
+													<input type="text" class="form-control input-sm" name ="level" value="${model.level}"/>
 												</div>
 											</div>
 										</div>
@@ -112,19 +115,19 @@
 											<div class="col-sm-3">
 												<label><b>Diện tích đến</b></label>
 												<div class="fg-line">
-													<input type="text" class="form-control input-sm" name ="areaRentTo" value="${model.areaRentTo }" />
+													<input type="text" class="form-control input-sm" name ="areaRentTo" value="${model.areaRentTo}" />
 												</div>
 											</div>
 											<div class="col-sm-3">
 												<label><b>Giá thuê từ</b></label>
 												<div class="fg-line">
-													<input type="text" class="form-control input-sm" name ="costRentFrom" value="${model.costRentFrom }" />
+													<input type="text" class="form-control input-sm" name ="costRentFrom" value="${model.costRentFrom}" />
 												</div>
 											</div>
 											<div class="col-sm-3">
 												<label><b>Giá thuê đến</b></label>
 												<div class="fg-line">
-													<input type="text" class="form-control input-sm" name ="costRentTo" value="${model.costRentTo }"/>
+													<input type="text" class="form-control input-sm" name ="costRentTo" value="${model.costRentTo}"/>
 												</div>
 											</div>
 										</div>
@@ -138,7 +141,7 @@
 											<div class="col-sm-4">
 												<label><b>Điện thoại quản lý</b></label>
 												<div class="fg-line">
-													<input type="text" class="form-control input-sm" name ="managerPhone" value="${model.managerPhone }"/>
+													<input type="text" class="form-control input-sm" name ="managerPhone" value="${model.managerPhone}"/>
 												</div>
 											</div>
 											<div class="col-sm-4">
@@ -157,9 +160,11 @@
 											<div class="col-sm-6">
 												<label><b>Loại tòa nhà</b></label>
 												<div class="fg-line">
-													<label class="checkbox-inline"><input type="checkbox" value="TANG_TRET" name ="buildingTypes">tầng trệt</label>
-													 <label class="checkbox-inline"><input type="checkbox" value="NGUYEN_CAN" name ="buildingTypes">nguyên căn</label> 
-														<label class="checkbox-inline"><input type="checkbox" value="NOI_THAT" name ="buildingTypes">nội thất</label>
+												<c:forEach var="item" items="${buildingTypes}">
+												<label class="checkbox-inline"><input type="checkbox" value="${item.key}" name ="buildingTypes">${item.value}</label>
+												</c:forEach>
+													
+							
 												</div>
 											</div>
 
@@ -183,7 +188,7 @@
 						</div>
 						</form>
 						<!-- end form -->
-
+						</div>
 						<!-- add button thêm xóa  -->
 						<div class="table-btn-controls">
 							<div class="pull-right tableTools-container">
@@ -215,17 +220,27 @@
 								<tr>
 									<th>tên sản phẩm</th>
 									<th>Địa chỉ</th>
+									<th>Giá thuê</th>
+									<th>Diện tích thuê</th>
+									<th>Loại tòa nhà</th>
 									<th>Tên quản lý</th>
 									<th>SĐT quản lý</th>
 								</tr>
 							</thead>
 							<tbody>
+							<c:forEach var="item" items="${model.listResults}">
 								<tr>
-									<td>tòa nhà kfc</td>
-									<td>123 giải phóng</td>
-									<td>chị agc</td>
-									<td>012547855</td>
+									<td>${item.name }</td>
+									<td>${item.address}</td>
+									<td>${item.costRent}</td>
+									<td>${item.rentArea}</td>
+									<td>${item.type}</td>
+									<td>${item.managerName}</td>
+									<td>${item.managerPhone}</td>
+									
 								</tr>
+							</c:forEach>
+								
 								
 							</tbody>
 						</table>
@@ -233,7 +248,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+
 	<!-- /.main-content -->
 </body>
 </html>
