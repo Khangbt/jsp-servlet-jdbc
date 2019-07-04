@@ -20,6 +20,7 @@ public class BuildingRepository extends AbstractJDBC<BuildingEntity> implements 
 		Map<String, Object> properties = buildMapSearch(builder);
 		StringBuilder whereClause = new StringBuilder();
 		
+		// phải dùng StringUtils.isnotBlank để check builder !=null và check builder != empty
 		if(StringUtils.isNotBlank(builder.getCostRentFrom())) {
 			whereClause.append(" AND costrent >= "+builder.getCostRentFrom()+"");
 		}
@@ -68,6 +69,9 @@ public class BuildingRepository extends AbstractJDBC<BuildingEntity> implements 
 					field.setAccessible(true);
 					if (field.get(builder) != null) {
 						result.put(field.getName().toLowerCase(), field.get(builder));
+					/*if  (field.getName().equals("numberOfBasement") || field.getName().equals("buildingArea")) {
+						result.put(field.getName().toLowerCase(), Integer.parseInt((String) field.get(builder)));
+						}*/
 					}
 				}
 			}

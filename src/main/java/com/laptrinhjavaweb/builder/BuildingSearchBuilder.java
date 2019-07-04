@@ -5,7 +5,11 @@ public class BuildingSearchBuilder {
 	private String name;
 	private String ward;
 	private String street;
-	private Integer numberOfBasement;
+	private String numberOfBasement;
+	private String district;
+	private String buildingArea;
+	private String managerPhone;
+	private String managerName;
 
 	private String areaRentFrom ;
 	private String areaRentTo ;
@@ -45,9 +49,22 @@ public class BuildingSearchBuilder {
 	public String getStreet() {
 		return street;
 	}
-	public Integer getNumberOfBasement() {
+	public String getNumberOfBasement() {
 		return numberOfBasement;
 	}
+	public String getDistrict() {
+		return district;
+	}
+	public String getBuildingArea() {
+		return buildingArea;
+	}
+	public String getManagerPhone() {
+		return managerPhone;
+	}
+	public String getManagerName() {
+		return managerName;
+	}
+	
 	public BuildingSearchBuilder(Builder builder) {
 		this.name = builder.name;
 		this.ward = builder.ward;
@@ -58,6 +75,10 @@ public class BuildingSearchBuilder {
 		this.costRentFrom = builder.costRentFrom;
 		this.costRentTo = builder.costRentTo;
 		this.buildingTypes = builder.buildingTypes;
+		this.district = builder.district;
+		this.buildingArea = builder.buildingArea;
+		this.managerName = builder.managerName;
+		this.managerPhone = builder.managerPhone;
 		
 	}
 	
@@ -65,7 +86,13 @@ public class BuildingSearchBuilder {
 		private String name;
 		private String ward;
 		private String street;
-		private Integer numberOfBasement;
+		private String numberOfBasement;
+		private String buildingArea;
+		private String managerPhone;
+		private String managerName;
+		
+		
+		private String district;
 		private String areaRentFrom ;
 		private String areaRentTo ;
 		private String costRentFrom ;
@@ -87,8 +114,28 @@ public class BuildingSearchBuilder {
 			return this;
 		}
 		
-		public Builder setNumberOfBasement(Integer numberOfBasement) {
+		public Builder setDistrict(String district) {
+			this.district = district;
+			return this;
+		}
+		
+		public Builder setNumberOfBasement(String numberOfBasement) {
 			this.numberOfBasement = numberOfBasement;
+			return this;
+		}
+		
+		public Builder setBuildingArea(String buildingArea) {
+			this.buildingArea = buildingArea;
+			return this;
+		}
+		
+		public Builder setManagerPhone(String managerPhone) {
+			this.managerPhone = managerPhone;
+			return this;
+		}
+		
+		public Builder setManagerName(String managerName) {
+			this.managerName = managerName;
 			return this;
 		}
 		

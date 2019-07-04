@@ -58,7 +58,10 @@ public class BuildingController extends HttpServlet {
 	private BuildingSearchBuilder initBuildingBuilder(BuildingDTO model) {
 		BuildingSearchBuilder builder = new BuildingSearchBuilder.Builder()
 				.setName(model.getName()).setWard(model.getWard()).setStreet(model.getStreet())
-				//.setNumberOfBasement(model.getNumberOfBasement())
+				.setDistrict(model.getDistrict())
+				.setNumberOfBasement(model.getNumberOfBasement())
+				.setBuildingArea(model.getBuildingArea())
+				.setManagerName(model.getManagerName()).setManagerPhone(model.getManagerPhone())
 				.setAreaRentFrom(model.getAreaRentFrom())
 				.setAreaRentTo(model.getAreaRentTo()).setCostRentFrom(model.getCostRentFrom()).setCostRentTo(model.getCostRentTo())
 				.setBuildingTypes(model.getBuildingTypes()).build();

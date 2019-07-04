@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
-<<c:url var = "buildingURL" value ="/admin-building"/>
+<c:url var = "buildingURL" value ="/admin-building"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +65,7 @@
 														<option value ="">Chọn-quận</option>
 														
 														<c:forEach var="item" items="${districts}">
-														<option value ="${item.key}">${item.value}</option>
+														<option value ="${item.key}" ${item.key == model.district ? 'selected' : ''}>${item.value}</option>
 														</c:forEach>
 														
 														
@@ -161,7 +161,8 @@
 												<label><b>Loại tòa nhà</b></label>
 												<div class="fg-line">
 												<c:forEach var="item" items="${buildingTypes}">
-												<label class="checkbox-inline"><input type="checkbox" value="${item.key}" name ="buildingTypes">${item.value}</label>
+												<label class="checkbox-inline"><input type="checkbox" value="${item.key}" 
+												name ="buildingTypes" ${fn : contains(fn:join(model.buildingTypes, ','), item.key) ? 'checked' : '' }>${item.value}</label>
 												</c:forEach>
 													
 							
@@ -219,6 +220,8 @@
 							<thead>
 								<tr>
 									<th>tên sản phẩm</th>
+									<th>Diện tích sàn</th>
+									<th>Số tầng hầm</th>
 									<th>Địa chỉ</th>
 									<th>Giá thuê</th>
 									<th>Diện tích thuê</th>
@@ -231,6 +234,8 @@
 							<c:forEach var="item" items="${model.listResults}">
 								<tr>
 									<td>${item.name }</td>
+									<td>${item.buildingArea}</td>
+									<td>${item.numberOfBasement}</td>
 									<td>${item.address}</td>
 									<td>${item.costRent}</td>
 									<td>${item.rentArea}</td>
